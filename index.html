@@ -113,6 +113,9 @@
             try {
                 // 1. Resize the image locally on the phone
                 const base64Data = await processAndResize(file);
+
+                // Add a small random delay (0 to 2 seconds) to spread out the server load
+                await new Promise(resolve => setTimeout(resolve, Math.random() * 2000));
                 
                 status.innerText = `Uploading: ${i + 1} of ${files.length}...`;
                 
